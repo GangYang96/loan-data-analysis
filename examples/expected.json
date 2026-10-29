@@ -1,0 +1,87 @@
+{
+  "as_of": "2026-10-28",
+  "minimum_days": 30,
+  "unit": "all",
+  "scope_count": 12,
+  "scope_balance_cents": 114000075,
+  "hits": [
+    {
+      "id": "DEMO-001",
+      "unit": "East",
+      "due_date": "2026-08-10",
+      "balance_cents": 12500000,
+      "source_line": 2,
+      "source_raw": "DEMO-001,East,2026-08-10,125000.00",
+      "days_overdue": 79
+    },
+    {
+      "id": "DEMO-003",
+      "unit": "Central",
+      "due_date": "2026-09-12",
+      "balance_cents": 25000050,
+      "source_line": 4,
+      "source_raw": "DEMO-003,Central,2026-09-12,250000.50",
+      "days_overdue": 46
+    },
+    {
+      "id": "DEMO-004",
+      "unit": "West",
+      "due_date": "2026-07-01",
+      "balance_cents": 9600025,
+      "source_line": 5,
+      "source_raw": "DEMO-004,West,2026-07-01,96000.25",
+      "days_overdue": 119
+    },
+    {
+      "id": "DEMO-006",
+      "unit": "East",
+      "due_date": "2026-08-25",
+      "balance_cents": 16800000,
+      "source_line": 7,
+      "source_raw": "DEMO-006,East,2026-08-25,168000.00",
+      "days_overdue": 64
+    },
+    {
+      "id": "DEMO-008",
+      "unit": "Central",
+      "due_date": "2026-09-01",
+      "balance_cents": 5400000,
+      "source_line": 9,
+      "source_raw": "DEMO-008,Central,2026-09-01,54000.00",
+      "days_overdue": 57
+    },
+    {
+      "id": "DEMO-011",
+      "unit": "Central",
+      "due_date": "2026-09-20",
+      "balance_cents": 4200000,
+      "source_line": 12,
+      "source_raw": "DEMO-011,Central,2026-09-20,42000.00",
+      "days_overdue": 38
+    }
+  ],
+  "hit_count": 6,
+  "hit_balance_cents": 73500075,
+  "groups": {
+    "East": {
+      "count": 2,
+      "balance_cents": 29300000
+    },
+    "Central": {
+      "count": 3,
+      "balance_cents": 34600050
+    },
+    "West": {
+      "count": 1,
+      "balance_cents": 9600025
+    }
+  },
+  "rule": "days_overdue >= minimum_days AND balance_cents > 0",
+  "synthetic": true,
+  "source_type": "bundled_synthetic",
+  "validation": {
+    "input": 12,
+    "valid": 12,
+    "rejected": []
+  }
+}
