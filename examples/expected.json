@@ -78,10 +78,44 @@
   },
   "rule": "days_overdue >= minimum_days AND balance_cents > 0",
   "synthetic": true,
+  "schema_version": 2,
   "source_type": "bundled_synthetic",
   "validation": {
     "input": 12,
     "valid": 12,
     "rejected": []
+  },
+  "aging": {
+    "as_of": "2026-10-28",
+    "unit": "all",
+    "buckets": [
+      {
+        "band": "current",
+        "count": 1,
+        "balance_cents": 13800000
+      },
+      {
+        "band": "1-30",
+        "count": 4,
+        "balance_cents": 26700000
+      },
+      {
+        "band": "31-60",
+        "count": 3,
+        "balance_cents": 34600050
+      },
+      {
+        "band": "61-90",
+        "count": 2,
+        "balance_cents": 29300000
+      },
+      {
+        "band": "91+",
+        "count": 1,
+        "balance_cents": 9600025
+      }
+    ],
+    "settled_count": 1,
+    "outstanding_cents": 114000075
   }
 }

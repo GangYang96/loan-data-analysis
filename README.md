@@ -25,6 +25,22 @@ node --test tests/*.test.cjs
 
 CLI 默认输出 JSON 到终端；添加 `--output outputs/result.json` 保存文件。输出文件已存在时会报错，需使用新文件名。所有命令从仓库根目录运行。
 
+
+## v1.1.0 · 账龄报表与数据对账
+
+- 账龄分布：未逾期、1–30、31–60、61–90、91+ 天，已结清笔数单列。
+- 两份 CSV 按编号对账：新增、移除、字段修改和余额净变动；存在隔离记录时拒绝对账。
+- 编号/机构搜索、排序、分页，以及完整分析结果的 CSV/JSON 导出。CSV 导出对公式起始字符作转义。
+
+载入正常样例 → 点击“载入前一份样例” → 执行分析 → 看到余额净变动 29,000 元 → 搜索 East → 导出 CSV（仍含全部六条命中记录）。切换异常样例后对账会提示错误；取消对账即可对有效记录继续分析。
+
+```sh
+node scripts/analyze.cjs --input examples/loans.csv --previous examples/loans-previous.csv --as-of 2026-10-28 --min-days 30
+node scripts/analyze.cjs --input examples/loans.csv --as-of 2026-10-28 --min-days 30 --format csv --output outputs/results.csv
+```
+
+新增逻辑见 [src/reporting.js](src/reporting.js)，数据格式和边界见 [设计说明](docs/architecture.md)。全部 19 项 Node 测试通过；版本变更见 [CHANGELOG.md](CHANGELOG.md)。
+
 ## 仓库内容
 
 | 路径 | 内容 |
@@ -53,3 +69,5 @@ CLI 默认输出 JSON 到终端；添加 `--output outputs/result.json` 保存�
 ## English
 
 CSV validation, overdue-loan analysis and source-row evidence with a browser UI and reproducible CLI. Open `index.html` directly, or serve this folder with Python. The browser and CLI use the same `src/core.js`. This is an independent, AI-assisted public prototype using synthetic fixtures, published in October 2026; it is not the original employer system, a model benchmark, or a production service.
+
+Contributions: see [CONTRIBUTING.md](CONTRIBUTING.md). Version 1.1 adds 账龄报表与数据对账; browser and CLI share the new module.

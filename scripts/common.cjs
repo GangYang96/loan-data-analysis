@@ -22,7 +22,7 @@ function read(file, maxBytes) {
   return fs.readFileSync(file, 'utf8');
 }
 function emit(value, file) {
-  const text = JSON.stringify(value, null, 2) + '\n';
+  const text = typeof value === 'string' ? value : JSON.stringify(value, null, 2) + '\n';
   if (!file) { process.stdout.write(text); return; }
   fs.mkdirSync(path.dirname(path.resolve(file)), {recursive:true});
   fs.writeFileSync(file, text, {flag:'wx'});
